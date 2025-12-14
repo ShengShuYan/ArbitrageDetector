@@ -23,14 +23,14 @@
 using json = nlohmann::json;
 using namespace std;
 
-// --- 1. ÅäÖÃ²ÎÊı ---
-const double MIN_TVL_USD = 50000.0; // µ÷ÖÁÊÊÖĞ£¬·ÀÖ¹Â©µô»ú»á
+// --- 1. é…ç½®å‚æ•° ---
+const double MIN_TVL_USD = 50000.0; // è°ƒè‡³é€‚ä¸­ï¼Œé˜²æ­¢æ¼æ‰æœºä¼š
 const double FEE = 0.997;
-// 32 Gwei * 400k Gas ¡Ö 0.0128 ETH
+// 32 Gwei * 400k Gas â‰ˆ 0.0128 ETH
 const double GAS_COST_ETH = 0.0128;
 const string WETH = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
 
-// --- 2. ÕûÊıÓ³ÉäÏµÍ³ ---
+// --- 2. æ•´æ•°æ˜ å°„ç³»ç»Ÿ ---
 unordered_map<string, size_t> token_to_id;
 vector<string> id_to_token;
 
@@ -59,7 +59,7 @@ struct ArbResult {
 
 vector<vector<Edge>> adj;
 
-// --- 3. ºËĞÄÊıÑ§º¯Êı  ---
+// --- 3. æ ¸å¿ƒæ•°å­¦å‡½æ•°  ---
 double get_amount_out(double amount_in, double reserve_in, double reserve_out) {
     if (amount_in <= 0) return 0;
     double amount_in_with_fee = amount_in * 997.0;
@@ -82,13 +82,13 @@ double calc_profit(double amount_in, const vector<size_t>& path) {
                 break;
             }
         }
-        // Èç¹ûÖĞ¼ä¶ÏÂ·»ò½ğ¶î¹ıĞ¡£¬·µ»Ø -1 ·ÀÖ¹Îóµ¼ÓÅ»¯Æ÷
+        // å¦‚æœä¸­é—´æ–­è·¯æˆ–é‡‘é¢è¿‡å°ï¼Œè¿”å› -1 é˜²æ­¢è¯¯å¯¼ä¼˜åŒ–å™¨
         if (!found || curr <= 1e-15) return -1.0;
     }
     return curr - amount_in;
 }
 
-// ·ÀÖ¹Í¶Èë½ğ¶î¹ı´ó³Å±¬Ğ¡³Ø×Ó
+// é˜²æ­¢æŠ•å…¥é‡‘é¢è¿‡å¤§æ’‘çˆ†å°æ± å­
 double get_bottleneck(const vector<size_t>& path) {
     double limit = 1e18;
     double simulated = 0.001;
@@ -99,7 +99,7 @@ double get_bottleneck(const vector<size_t>& path) {
         size_t v = path[i + 1];
         for (const auto& e : adj[u]) {
             if (e.to == v) {
-                double max_pool = e.r_in * 0.50; // ×î´óÖ»¶¯ÓÃ 50%
+                double max_pool = e.r_in * 0.50; // æœ€å¤§åªåŠ¨ç”¨ 50%
                 double ratio = simulated / initial;
                 if (ratio > 1e-9) {
                     double local_limit = max_pool / ratio;
@@ -114,14 +114,14 @@ double get_bottleneck(const vector<size_t>& path) {
 }
 
 pair<double, double> optimize(const vector<size_t>& path) {
-    // Ê¹ÓÃÆ¿¾±Ì½²â»ñÈ¡ÕıÈ·µÄÉÏÏŞ
+    // ä½¿ç”¨ç“¶é¢ˆæ¢æµ‹è·å–æ­£ç¡®çš„ä¸Šé™
     double limit = get_bottleneck(path);
     if (limit <= 0) return { 0.0, -1.0 };
 
-    double low = limit * 0.0001; // ¶¯Ì¬ÏÂÏŞ
+    double low = limit * 0.0001; // åŠ¨æ€ä¸‹é™
     double high = limit;
 
-    // Èç¹ûÇø¼äÎŞĞ§£¬Ö±½Ó·µ»Ø
+    // å¦‚æœåŒºé—´æ— æ•ˆï¼Œç›´æ¥è¿”å›
     if (low >= high) return { low, calc_profit(low, path) };
 
     double phi = (sqrt(5.0) - 1.0) / 2.0;
@@ -144,7 +144,7 @@ pair<double, double> optimize(const vector<size_t>& path) {
     return { opt, calc_profit(opt, path) };
 }
 
-// --- Ö÷³ÌĞò ---
+// --- ä¸»ç¨‹åº ---
 int main() {
     auto start_total = chrono::high_resolution_clock::now();
 
@@ -221,7 +221,7 @@ int main() {
     set<size_t> seen_hashes;
     long long steps = 0;
 
-    while (!spfa_q.empty() && steps < 20000000) { // Ôö¼Ó²½ÊıÉÏÏŞ
+    while (!spfa_q.empty() && steps < 20000000) { // å¢åŠ æ­¥æ•°ä¸Šé™
         size_t u = spfa_q.front(); spfa_q.pop_front();
         in_q[u] = false; steps++;
         if (u >= adj.size()) continue;
@@ -262,12 +262,12 @@ int main() {
     vector<ArbResult> results;
     for (const auto& path : cycles) {
         auto res = optimize(path);
-        // Ö»ÓĞÃ«Àû > 0 ²Å´¦Àí
+        // åªæœ‰æ¯›åˆ© > 0 æ‰å¤„ç†
         if (res.second > 0) {
             double eth_val = res.second * eth_prices[path[0]];
             double net = eth_val - GAS_COST_ETH;
 
-            // Ö»Òª¾»Àû > 0.0001 
+            // åªè¦å‡€åˆ© > 0.0001 
             if (net > 0.0001) {
                 results.push_back({ path[0], path, res.first, net, res.second });
             }
@@ -279,7 +279,7 @@ int main() {
         return a.profit_eth > b.profit_eth;
         });
 
-    // --- 6. Ë«ÎÄ¼şÊä³ö ---
+    // --- 6. åŒæ–‡ä»¶è¾“å‡º ---
 
     // A. ALL Data
     cout << "[INFO] Saving ALL raw opportunities..." << endl;
@@ -332,7 +332,7 @@ int main() {
     //}
     //f_best.close();
 
-    //  JSON Êä³ö£º½öÇ° 10 ¸ö WETH ½á¹û
+    //  JSON è¾“å‡ºï¼šä»…å‰ 10 ä¸ª WETH ç»“æœ
     string TARGET_TOKEN = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
     string OUTPUT_FILENAME = "weth_opportunities.json";
 
@@ -342,13 +342,13 @@ int main() {
 
         bool isFirst = true;
         int count = 0;
-        int MAX_JSON_OUTPUT = 10; // ÏŞÖÆÊä³öÊıÁ¿
+        int MAX_JSON_OUTPUT = 10; // é™åˆ¶è¾“å‡ºæ•°é‡
 
         for (const auto& r : results) {
-            // È¥µôÁËETHÆğµãÏŞÖÆ
+            // å»æ‰äº†ETHèµ·ç‚¹é™åˆ¶
             //if (id_to_token[r.path[0]] == TARGET_TOKEN) {
             if (1) {
-                // [ĞŞ¸Äµã] ´ïµ½10¸ö¾ÍÍ£Ö¹
+                // [ä¿®æ”¹ç‚¹] è¾¾åˆ°10ä¸ªå°±åœæ­¢
                 if (count >= MAX_JSON_OUTPUT) break;
 
                 if (!isFirst) f_json << "," << endl;
@@ -379,8 +379,8 @@ int main() {
         cout << "[INFO] Saved top " << count << " WETH cycles to '" << OUTPUT_FILENAME << "'" << endl;
     }
 
-    // Éú³ÉÈ«Á¿ opportunity.json ¹©²Î¿¼ 
-    //±£ÁôÔ­À´µÄ opportunity.json Âß¼­
+    // ç”Ÿæˆå…¨é‡ opportunity.json ä¾›å‚è€ƒ 
+    //ä¿ç•™åŸæ¥çš„ opportunity.json é€»è¾‘
 
     return 0;
 }
