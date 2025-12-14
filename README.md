@@ -15,5 +15,5 @@ Discrepancies may be observed between the off-chain predicted profit (C++) and t
 * **Status:** This is a known issue scheduled for resolution in the next iteration.
 
 ## AI Usage Declaration
-Portions of the overlap between different programming languages and implementation were assisted by AI tools. All logic and implementations have been manually reviewed and verified by the author.
+AI tools assisted in the **implementation of algorithms** and the **translation of logic between different programming languages**. All logic and code have been manually reviewed and verified by the author.
 
