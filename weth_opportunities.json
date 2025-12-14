@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "inputAmount": "0.000000593835198051",
+    "expectedProfit": "41.213076633874734966",
+    "path": [
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xc690f7c7fcffa6a82b79fab7508c466fefdfc8c5",
+      "0x557b933a7c2c45672b610f8954a3deb39a51a8ca",
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+    ]
+  },
+  {
+    "id": 2,
+    "inputAmount": "0.000000610224631404",
+    "expectedProfit": "41.213074438972036262",
+    "path": [
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xe5caef4af8780e59df925470b050fb23c43ca68c",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+    ]
+  },
+  {
+    "id": 3,
+    "inputAmount": "0.000000618207708436",
+    "expectedProfit": "41.213072768200383678",
+    "path": [
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0x8fc8f8269ebca376d046ce292dc7eac40c8d358a",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+    ]
+  },
+  {
+    "id": 4,
+    "inputAmount": "0.000000596128380421",
+    "expectedProfit": "41.213072742154061245",
+    "path": [
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xc690f7c7fcffa6a82b79fab7508c466fefdfc8c5",
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+    ]
+  },
+  {
+    "id": 5,
+    "inputAmount": "0.000000618555473423",
+    "expectedProfit": "41.213067838958586719",
+    "path": [
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+    ]
+  },
+  {
+    "id": 6,
+    "inputAmount": "0.000000001657129763",
+    "expectedProfit": "40.241191569806993300",
+    "path": [
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xc690f7c7fcffa6a82b79fab7508c466fefdfc8c5",
+      "0x557b933a7c2c45672b610f8954a3deb39a51a8ca",
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "0x6fc2f1044a3b9bb3e43a43ec8f840843ed753061",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    ]
+  },
+  {
+    "id": 7,
+    "inputAmount": "0.000000001747582576",
+    "expectedProfit": "40.238781157132706312",
+    "path": [
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0x006699d34aa3013605d468d2755a2fe59a16b12b",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    ]
+  },
+  {
+    "id": 8,
+    "inputAmount": "0.000000001738670543",
+    "expectedProfit": "40.238535793512831162",
+    "path": [
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xf8c3527cc04340b208c854e985240c02f7b7793f",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    ]
+  },
+  {
+    "id": 9,
+    "inputAmount": "0.000000001736526740",
+    "expectedProfit": "40.238303840015838375",
+    "path": [
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xe5caef4af8780e59df925470b050fb23c43ca68c",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    ]
+  },
+  {
+    "id": 10,
+    "inputAmount": "0.000000001734342182",
+    "expectedProfit": "40.236880271040142532",
+    "path": [
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "0xd9016a907dc0ecfa3ca425ab20b6b785b42f2373",
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "0xd233d1f6fd11640081abb8db125f722b5dc729dc",
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    ]
+  }
+]
